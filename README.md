@@ -53,10 +53,10 @@ This project is part of the Data Science Nanodegree Program by Udacity. The goal
 
 ### Screenshots:
 1. Home Page:
-![Home Page](app\main.jpeg)
+![Home Page](app/main.jpeg)
 
 2. Message Classification:
-![Message Classification](app\classify.jpeg)
+![Message Classification](app/classify.jpeg)
 
 ### Acknowledgements:
 - [Udacity](https://www.udacity.com/)
