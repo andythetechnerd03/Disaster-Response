@@ -52,7 +52,7 @@ engine = create_engine('sqlite:///../data/Disaster.db')
 df = pd.read_sql_table('main', engine)
 
 # load model
-model = joblib.load("../models/xgboos.pkl")
+model = joblib.load("../models/classifier.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model
@@ -150,8 +150,11 @@ def go():
     query = request.args.get('query', '') 
 
     # use model to predict classification for query
-    classification_labels = model.predict([query])[0]
-    classification_results = dict(zip(df.columns[4:], classification_labels))
+    classification = model.predict_proba([query])
+    classification_labels = list(map(lambda x: x.argmax(), classification))
+    classification_probs = list(map(lambda x: x[0][1].item(), classification))
+    print(len(df.columns[4:]), len(classification_probs))
+    classification_results = dict(zip(df.columns[4:], classification_probs))
 
     # This will render the go.html Please see that file. 
     return render_template(

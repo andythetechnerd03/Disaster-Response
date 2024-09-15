@@ -10,11 +10,11 @@
 {% block content %}
     <h1 class="text-center">Result</h1>
         <ul class="list-group">
-            {% for category, classification in classification_result.items() %}
-                {% if classification == 1 %}
-                    <li class="list-group-item list-group-item-success text-center">{{category.replace('_', ' ').title()}}</li>
+            {% for category, prob in classification_result.items() %}
+                {% if prob > 0.5 %}
+                    <li class="list-group-item list-group-item-success text-center">{{category.replace('_', ' ').title() + " - " + prob|string}}</li>
                 {% else %}
-                    <li class="list-group-item list-group-item-dark text-center">{{category.replace('_', ' ').title()}}</li>
+                    <li class="list-group-item list-group-item-dark text-center">{{category.replace('_', ' ').title() + " - " + prob|string}}</li>
                 {% endif %}
             {% endfor %}
 

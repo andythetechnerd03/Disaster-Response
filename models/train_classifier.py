@@ -89,9 +89,9 @@ def build_model():
 
     # Set the parameters for the grid search
     parameters = {
-        'tfidf__max_df': (0.5, 0.75, 1.0),
-        'tfidf__ngram_range': ((1, 1), (1, 2)),
-        'clf__estimator__max_depth': [3, 5, 7, 9]
+        'tfidf__max_df': [1.0],
+        'tfidf__ngram_range': [(1, 2)],
+        'clf__estimator__max_depth': [5, 7, 9, 11]
     }
     logging.info("Parameters set")
     logging.debug(f"Parameters: {parameters}")

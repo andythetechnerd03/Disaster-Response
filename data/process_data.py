@@ -59,6 +59,9 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
         categories[column] = categories[column].apply(lambda x: x[-1])
         # Convert column from string to numeric
         categories[column] = categories[column].astype(int)
+    # replace 2 with 1
+    categories.replace(2, 1, inplace=True)
+    assert categories.isin([0, 1]).all().all(), "Categories not converted to 0 or 1"
     logging.info("Category values converted to 0 or 1")
     logging.debug(f"Categories converted: {categories.dtypes}")
 
